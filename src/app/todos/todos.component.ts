@@ -19,10 +19,14 @@ export class TodosComponent implements OnInit {
 
   ngOnInit() {
     this.todoList = this._todoService.get();
+    this.todoList.forEach((element)=>{
+      console.log(element.Id);
+    });
   }
 
   addTask(todo: TodoModel) {
     todo.Tasks.push({ Id: 999, Task: 'new task', Done: false });
+    console.log(this.todoList);
   }
 
   refreshTask(event: any) {

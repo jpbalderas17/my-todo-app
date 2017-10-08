@@ -14,7 +14,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TodosComponent } from './todos/todos.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { TasksComponent } from './todos/tasks/tasks.component';
+import { TodoComponent } from './todos/todo/todo.component';
 import { TodoHeaderComponent } from './todos/todo-header/todo-header.component';
+
 
 // Services
 import { TodosService } from './todos/todos.service';
@@ -28,6 +30,7 @@ import { TodosService } from './todos/todos.service';
     TodosComponent,
     FooterComponent,
     TasksComponent,
+    TodoComponent,
     TodoHeaderComponent
   ],
   imports: [
