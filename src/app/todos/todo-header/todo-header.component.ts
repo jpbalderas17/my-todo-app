@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoModel } from '../todos.model';
 
+
 @Component({
     selector: 'app-todo-header',
     templateUrl: './todo-header.component.html',
@@ -13,8 +14,13 @@ export class TodoHeaderComponent {
     @Input() index: number;
 
     @Output() refreshEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Output() deleteEvent: EventEmitter<any> = new EventEmitter<any>();
 
     refreshList(todo: TodoModel) {
         this.refreshEvent.emit({todo: todo, index: this.index});
+    }
+
+    deleteTodo(todo: TodoModel) {
+        this.deleteEvent.emit({todo: todo});
     }
 }

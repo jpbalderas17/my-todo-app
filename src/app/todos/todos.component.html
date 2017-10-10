@@ -2,8 +2,13 @@
     <div class="mdl-cell mdl-cell--12-col">
         <h3 class="top-header">Todo List</h3>
         <div class="mdl-grid">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                        <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        <span class="mdl-checkbox__label">Checkbox</span>
+                      </label>
             <div class="mdl-cell--3-col" *ngFor="let todo of todoList; index as i">
-                <div class="mdl-grid">
+                <app-to-do [todo]="todo" (deleteEvent)="deleteTodo($event)"></app-to-do>
+                <!-- <div class="mdl-grid">
                     <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
                         <app-todo-header [todo]="todo" [index]="i" (refreshEvent)="refreshTask($event)"></app-todo-header>
                         <app-tasks [keyword]="todo.keyword"></app-tasks>
@@ -18,7 +23,7 @@
                 
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

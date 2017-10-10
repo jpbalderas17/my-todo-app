@@ -12,14 +12,11 @@ export class MiniLoaderComponent implements OnInit {
     @Input() width = 50;
     @Input() height = 50;
 
-    showLoader = true;
+    showLoader = false;
 
     constructor() { }
 
     ngOnInit() {
-
-        this.showLoad();
-
     }
 
     showLoad() {
@@ -30,5 +27,9 @@ export class MiniLoaderComponent implements OnInit {
             this.showLoader = false;
         }, this.time);
 
+    }
+
+    toggle() {
+        this.showLoader = !this.showLoader;
     }
 }

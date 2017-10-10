@@ -1,0 +1,13 @@
+<div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+    <app-todo-header [todo]="todo" [index]="todo.id" (refreshEvent)="refreshTask($event)" (deleteEvent)="deleteTodo($event)"></app-todo-header>
+    <app-tasks [id]="todo.id"></app-tasks>
+    <button (click)="addTask(todo);" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+        style="margin-left: 10px; margin-bottom: 10px;" data-upgraded=",MaterialButton,MaterialRipple">
+
+        <i class="material-icons">add</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple"></span>
+        </span>
+
+    </button>
+</div>

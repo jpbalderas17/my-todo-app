@@ -3,13 +3,14 @@ class Filter {
 }
 
 export class TodoModel extends Filter {
-    public Id: number;
-    public Title: string;
+    public id: number;
+    public title: string;
     public Tasks: Array<TaskModel>;
 }
 
 export class TaskModel {
-    public Id: number;
-    public Task: string;
-    public Done: boolean;
+    public id: number;
+    public task: string;
+    public done: boolean;
+    public todo_id: number;
 }

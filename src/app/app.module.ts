@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule }    from '@angular/http';
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { TodosDataService } from './todos/todos-data.service';
+
+
 
 // Modules
 import { AppRouterModule } from './app.router.module';
@@ -16,6 +22,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { TasksComponent } from './todos/tasks/tasks.component';
 import { TodoComponent } from './todos/todo/todo.component';
 import { TodoHeaderComponent } from './todos/todo-header/todo-header.component';
+
+
 
 
 // Services
@@ -37,7 +45,9 @@ import { TodosService } from './todos/todos.service';
     BrowserModule,
     FormsModule,
     SharedModule,
-    AppRouterModule
+    AppRouterModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot( TodosDataService, {delay: 1000} )
   ],
   providers: [TodosService],
   bootstrap: [AppComponent]

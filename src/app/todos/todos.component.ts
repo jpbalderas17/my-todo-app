@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { TasksComponent } from './tasks/tasks.component';
 import { TodosService } from './todos.service';
 import { TodoModel } from './todos.model';
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-todos',
@@ -13,30 +14,30 @@ export class TodosComponent implements OnInit {
 
   todoList: Array<TodoModel> = new Array<TodoModel>();
 
-  @ViewChildren(TasksComponent) tasksComponents: QueryList<TasksComponent>;
+  
 
-  constructor(private _todoService: TodosService) { }
+  constructor(private _todoService: TodosService) { 
+    this._todoService.deleteConfirmed$.subscribe((
+      todo => {
+        this.todoList.splice(this.todoList.indexOf(todo),1);
+      }
+    ));
+   }
 
   ngOnInit() {
-    this.todoList = this._todoService.get();
-    this.todoList.forEach((element)=>{
-      console.log(element.Id);
-    });
+   this.getTodos();
   }
 
   addTask(todo: TodoModel) {
-    todo.Tasks.push({ Id: 999, Task: 'new task', Done: false });
+    todo.Tasks.push({ id: 999, task: 'new task', done: false, todo_id: todo.id });
+  }
+
+  getTodos() {
+    this._todoService.get()
+    .then(todos => this.todoList = todos);
+  }
+
+  deleteTodo(event: any) {
     console.log(this.todoList);
   }
-
-  refreshTask(event: any) {
-
-    const todoTask = this.tasksComponents.find((item: TasksComponent, index: number) => {
-      return index === event.index;
-    });
-
-    todoTask.loadTask(event.todo.Id);
-
-  }
-
 }
